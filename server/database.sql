@@ -1,4 +1,4 @@
-CREATE DATABASE holiday-work;
+CREATE DATABASE holiday_work;
 
 CREATE TABLE work(
     work_id SERIAL PRIMARY KEY,
