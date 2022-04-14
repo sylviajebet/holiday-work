@@ -12,11 +12,16 @@ app.use(express.json()); //req.body
 
 //create one work
 
-app.post("/work", (req, res) => {
+app.post("/work", async (req, res) => {
     try {
 
-        console.log(req.body);
+        const { subject } = req.body;
+        const newWork = await pool.query(
+            "INSERT INTO home_work (subject) VALUES ($1) RETURNING * ",
+            [subject]
+        );
         
+        res.json(newWork);
     } catch (err) {
         console.error(err.message);
     }
