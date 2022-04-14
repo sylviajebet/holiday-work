@@ -21,7 +21,7 @@ app.post("/work", async (req, res) => {
             [subject]
         );
         
-        res.json(newWork);
+        res.json(newWork.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
