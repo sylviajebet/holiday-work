@@ -29,6 +29,15 @@ app.post("/work", async (req, res) => {
 
 //get all work
 
+app.get("/work", async (req, res) => {
+    try {
+        const allWork = await pool.query("SELECT * FROM home_work");
+        res.json(allWork.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 //get one work
 
 //update one work
