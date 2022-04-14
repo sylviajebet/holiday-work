@@ -53,6 +53,19 @@ app.get("/work/:id", async (req, res) => {
 
 //update one work
 
+app.put("/work/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { subject } = req.body;
+        const updateWork = await pool.query("UPDATE home_work SET subject = $1 WHERE work_id = $2",
+        [subject, id]);
+
+        res.json("Work was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 //delete one work
 
 app.listen(5000, () => {
