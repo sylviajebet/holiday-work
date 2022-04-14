@@ -40,6 +40,17 @@ app.get("/work", async (req, res) => {
 
 //get one work
 
+app.get("/work/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const oneWork = await pool.query("SELECT * FROM home_work WHERE work_id = $1",
+        [id]);
+        res.json(oneWork.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 //update one work
 
 //delete one work
