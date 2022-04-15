@@ -68,6 +68,17 @@ app.put("/work/:id", async (req, res) => {
 
 //delete one work
 
+app.delete("/work/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteWork = await pool.query("DELETE FROM home_work WHERE work_id = $1", [id]);
+
+        res.json("Work was deleted!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 app.listen(5000, () => {
     console.log("Server has started on port 5000");
 });
