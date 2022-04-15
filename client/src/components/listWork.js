@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+import EditWork from "./editWork";
+
 const ListWork = () => {
 
     const [ work, setWork] = useState([]);
@@ -53,7 +55,9 @@ const ListWork = () => {
                 {work.map(workk => (
                     <tr key={workk.work_id}>
                         <td>{workk.subject}</td>
-                        <td>Edit</td>
+                        <td>
+                            <EditWork />
+                        </td>
                         <td><button className="btn btn-danger" onClick={() => deleteWork(workk.work_id)}>Delete</button></td>
                     </tr>
                  ))
