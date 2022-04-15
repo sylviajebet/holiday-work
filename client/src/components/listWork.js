@@ -12,7 +12,7 @@ const ListWork = () => {
           method: "DELETE"
         });
 
-          console.log(deleteWork);
+          setWork(work.filter(workk => workk.work_id !== id));
         } catch (err) {
             console.error(err.message);
         }
