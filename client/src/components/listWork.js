@@ -4,6 +4,20 @@ const ListWork = () => {
 
     const [ work, setWork] = useState([]);
 
+    //delete work function
+
+    const deleteWork = async (id) => {
+        try {
+          const deleteWork = await fetch(`http://localhost:5000/work/${id}`, {
+          method: "DELETE"
+        });
+
+          console.log(deleteWork);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
     const getWork = async () => {
         try {
 
@@ -37,10 +51,10 @@ const ListWork = () => {
                         <td>john@example.com</td>
                     </tr> */}
                 {work.map(workk => (
-                    <tr>
+                    <tr key={workk.work_id}>
                         <td>{workk.subject}</td>
                         <td>Edit</td>
-                        <td>Delete</td>
+                        <td><button className="btn btn-danger" onClick={() => deleteWork(workk.work_id)}>Delete</button></td>
                     </tr>
                  ))
 
