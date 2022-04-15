@@ -1,13 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
-const EditWork = () => {
+const EditWork = ({ workk }) => {
+    const [subject, setSubject] = useState(workk.subject);
+
     return (
         <Fragment>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-        Edit
+        <button type="button" 
+            class="btn btn-warning" 
+            data-toggle="modal" 
+            data-target={`#id${workk.work_id}`}
+            >
+
+            Edit
         </button>
 
-        <div class="modal" id="myModal">
+        {/* 
+            id = id10
+        */}
+        <div class="modal" id={`id${workk.work_id}`}>
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -17,10 +27,11 @@ const EditWork = () => {
             </div>
 
             <div class="modal-body">
-                <input type="text" />
+                <input type="text" className="form-control" value={subject} />
             </div>
 
             <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Edit</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 

@@ -56,7 +56,7 @@ const ListWork = () => {
                     <tr key={workk.work_id}>
                         <td>{workk.subject}</td>
                         <td>
-                            <EditWork />
+                            <EditWork workk={workk} />
                         </td>
                         <td><button className="btn btn-danger" onClick={() => deleteWork(workk.work_id)}>Delete</button></td>
                     </tr>
